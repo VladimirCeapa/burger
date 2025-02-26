@@ -1,0 +1,135 @@
+.container {
+   position: relative;
+   width: 20em;
+   min-height: 1.5em;
+   border: 3px solid goldenrod;
+   color: rgb(248, 248, 247);
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: 500;
+   display: flex;
+   align-items: center;
+   gap: .5em;
+   padding: .5em;
+   outline: none;
+   text-transform: uppercase;
+   margin-bottom: 5em;
+}
+
+
+.container:focus.caret:focus {
+   border-color: rgba(218, 165, 32, 0.747);
+  
+}
+
+.value {
+   flex-grow: 1;
+}
+
+.clear-btn {
+   position: absolute;
+   right: -25px;
+   background: none;
+   color: goldenrod;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   padding: 0;
+   font-size: 2.25em;
+}
+
+.clear-btn:focus,
+.clear-btn:hover {
+   color: rgba(218, 165, 32, 0.747);
+}
+
+
+
+.caret {
+   position: absolute;
+   right: -0.50rem;
+   top: 50%;
+   transform: translate(0, -50%) rotate(0);
+   width: 30px;
+   height: 20px;
+   padding-right: 2rem;
+   background: url("data:image/svg+xml,<svg height='15px' width='15px' viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>") no-repeat;
+   background-position: center;
+   transition: 0.3s ease-out;
+}
+
+.options:focus+.caret {
+   border-color: rgba(218, 165, 32, 0.747);
+   transform: translate(0, -50%) rotate(180deg);
+}
+
+
+.options {
+   position: absolute;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   max-height: 15em;
+   display: none;
+   color: white;
+   overflow-y: auto;
+   border: 0.2em solid goldenrod;
+   background-color: rgb(73, 74, 75);
+   width: 100%;
+   left: 0;
+   top: calc(100% + .45em);
+   z-index: 100;
+
+}
+
+.options.show {
+   color: rgb(248, 248, 248);
+   display: block;
+
+}
+
+.option {
+   padding: .25em .5em;
+   cursor: pointer;
+}
+
+.option.highlighted {
+   background-color: goldenrod;
+}
+
+.name {
+   position: absolute;
+   color: rgb(248, 248, 247);
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: 500;
+   text-transform: uppercase;
+   margin-bottom: 5em;
+}
+
+.adauga {
+   position: absolute;
+   top: 140%;
+   margin-left: 5em;
+   color: rgb(248, 248, 247);
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: 500;
+   text-transform: uppercase;
+   margin-bottom: 5em;
+}
+
+
+.cross {
+   color: goldenrod;
+   background-color: #fff;
+   margin: auto;
+   height: 9px;
+   padding: 0.5em;
+   border: 0.2em solid goldenrod;
+   border-radius: 50%;
+   background-color: #fff;
+   cursor: pointer;
+}
+
+.cross:hover {
+   color: rgba(218, 165, 32, 0.699);
+   transform: translate(0, -50%) rotate(0);
+}
