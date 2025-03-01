@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from './select.module.css'
+// import burger from'./burgerImg.module.css'
 
 type SelectOption = {
     label: string
@@ -11,7 +12,9 @@ type SelectProps = {
     options: SelectOption[]
     value?: SelectOption
     name:string
+
     onChange: (value: SelectOption | undefined) => void
+
     
 
 }
@@ -24,10 +27,13 @@ export function Select({ value,name, onChange, options }: SelectProps) {
         onChange(undefined)
     }
 function selectOption(option:SelectOption){
-   if(option !==value) onChange(option)
+   if(option !==value){onChange(option)} 
+    
+       
 }
 function isOptionSelected(option:SelectOption){
    return option === value
+
 }
 useEffect(()=>{
     if(isOpen)setHighlightIndex(0)
@@ -54,7 +60,6 @@ useEffect(()=>{
                     <li onClick={e=>{
                         e.stopPropagation()
                         selectOption(option)
-                        console.log(e.currentTarget)
                         setIsOpen(false)
                     }} 
                     
@@ -69,7 +74,7 @@ useEffect(()=>{
             </ul>
             <span onClick={e=>{
                 e.stopPropagation()
-                // console.log('click')
+              
             }}  className={styles.adauga}>
     <span className={styles.cross}>✖</span> Adaugă item</span>
         </div>

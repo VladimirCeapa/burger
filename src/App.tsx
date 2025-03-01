@@ -14,9 +14,9 @@ const options2 = [
 ]
 const options3 = [
   { label: '-', value: '1' },
-  { label: 'PÂRJOALĂ VITĂ (35 lei)', value: '2' },
-  { label: 'FILEU PUI PANE (25 lei)', value: '3' },
-  { label: 'FILEU PUI PANE (25 lei)', value: '4' },
+  { label: 'PÂRJOALĂ VITĂ (35 lei)', value: '5' },
+  { label: 'FILEU PUI PANE (25 lei)', value: '6' },
+  { label: 'FILEU PUI PANE (25 lei)', value: '7' },
 ]
 
 
@@ -26,13 +26,12 @@ function App() {
   const [value1, setValue2] = useState<typeof options2[0] | undefined>(options2[0])
   const [value2, setValue3] = useState<typeof options3[0] | undefined>(options3[0])
 
-
   return (
     <>
       <div className={app.wrapper}>
         <div className={app.left}>
 
-          <Select options={options} value={value} name={"1. chifla"} onChange={item => setValue1(item)} />
+          <Select options={options} value={value} name={"1. chifla"} onChange={item =>  setValue1(item)}    />
           <Select options={options2} value={value1} name={"2. carne"} onChange={item => setValue2(item)} />
           <Select options={options3} value={value2} name={"3.SOS CHIFLA JOS"} onChange={item => setValue3(item)} />
         </div>
@@ -42,10 +41,10 @@ function App() {
             <img className={burger.chiflaImag} src="../src/img/asset-1.svg" alt="" />
           </div>
 
-          <div className={burger.carne}>
+          {<div className={burger.carne}   >
            <img className={burger.carneImag} src="../src/img/pirjoala-de-vita.svg" alt="" /> 
             <span className={burger.carneText}>PÂRJOALĂ VITĂ</span>
-          </div>
+          </div>}
           <div className={burger.chiflaBottom}>
             <span className={burger.chiflaTextBottom}>CHIFLA BRIOCHE</span>
             <img className={burger.chiflaImagBottom} src="../src/img/asset-23.svg" alt="" />
