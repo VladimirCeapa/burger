@@ -1,56 +1,111 @@
 import { useState } from 'react'
-import { Select } from './Select'
+import { Select, SelectOption } from './components/Select'
 import app from './app.module.css'
-import burger from './burgerImg.module.css'
+import Cifla from './components/ingridientMenu/Cifla'
+import ChiflaBottum from './components/ingridientMenu/CiflaBottom';
 
-const options = [
-  { label: 'CHIFLA BRIOCHE(8 lei)', value: '0' },
+
+
+
+interface SelectControl {
+  id: string;
+  options: SelectOption[];
+  value: string;
+  isInitial: boolean;
+}
+
+
+const INITIAL_SELECTS = [
+  {
+    id: '1',
+    options: [{ label: '-', value: ' 0' },
+    { label: 'SOS KETCHUP (10lei)', value: '25' },
+    { label: 'SOS TARTAR (10lei)', value: '25' },
+    { label: 'SOS MAIONEZA (10lei)', value: '25' },] as SelectOption[],
+    value: "Chifla",
+    isInitial: true
+  },
+  {
+    id: '2',
+    options: [{ label: '-', value: ' 0' },
+    { label: 'PÂRJOALĂ VITĂ (45lei)', value: '35' },
+    { label: 'FILEU PUI PANE (32lei)', value: '25' },
+    { label: 'FILEU PUI GRILL(32lei)', value: '25' }] as SelectOption[],
+    value: "Carne",
+    isInitial: true
+  },
+
 ]
-const options2 = [
-  { label: '-', value: '1' },
-  { label: 'PÂRJOALĂ VITĂ (35 lei)', value: '2' },
-  { label: 'FILEU PUI PANE (25 lei)', value: '3' },
-  { label: 'FILEU PUI PANE (25 lei)', value: '4' },
-]
-const options3 = [
-  { label: '-', value: '1' },
-  { label: 'PÂRJOALĂ VITĂ (35 lei)', value: '5' },
-  { label: 'FILEU PUI PANE (25 lei)', value: '6' },
-  { label: 'FILEU PUI PANE (25 lei)', value: '7' },
-]
+
+
+
 
 
 
 function App() {
-  const [value, setValue1] = useState<typeof options[0] | undefined>(options[0])
-  const [value1, setValue2] = useState<typeof options2[0] | undefined>(options2[0])
-  const [value2, setValue3] = useState<typeof options3[0] | undefined>(options3[0])
+  const [selects, setSelects] = useState(INITIAL_SELECTS);
+
+
+  const handleValueChange = (id: string, newValue: string) => {
+    setSelects(prev => prev.map(select =>
+      select.id === id ? { ...select, newValue } : select
+    ));
+  };
+
+  // Добавление нового селекта
+  const handleAddSelect = (parentOptions: SelectOption[]) => {
+    const newSelect: SelectControl = {
+      id: Date.now().toString(),
+      options: parentOptions,
+      value: "test",
+      isInitial: false
+    };
+
+    setSelects(prev => [...prev, newSelect]);
+  };
+
+
+  const handleRemoveSelect = (id: string) => {
+    setSelects(prev => prev.filter(select => select.id !== id));
+  };
+
+
+
+
 
   return (
     <>
       <div className={app.wrapper}>
         <div className={app.left}>
 
-          <Select options={options} value={value} name={"1. chifla"} onChange={item =>  setValue1(item)}    />
-          <Select options={options2} value={value1} name={"2. carne"} onChange={item => setValue2(item)} />
-          <Select options={options3} value={value2} name={"3.SOS CHIFLA JOS"} onChange={item => setValue3(item)} />
-        </div>
-        <div className={app.right}>
-          <div className={burger.chifla}>
-            <span className={burger.chiflaText}>CHIFLA BRIOCHE</span>
-            <img className={burger.chiflaImag} src="../src/img/asset-1.svg" alt="" />
+
+          <div>
+            {selects.map(select => (
+              <div key={select.id} >
+                <Select
+                  options={select.options}
+                  onChange={(value) => handleValueChange(select.id, value.value)}
+                  hasAddButton={select.isInitial}
+                  onAdd={() => select.isInitial && handleAddSelect(select.options)}
+                  onRemove={!select.isInitial ? () => handleRemoveSelect(select.id) : undefined} name={select.value} />
+
+
+              </div>
+            ))}
           </div>
 
-          {<div className={burger.carne}   >
-           <img className={burger.carneImag} src="../src/img/pirjoala-de-vita.svg" alt="" /> 
-            <span className={burger.carneText}>PÂRJOALĂ VITĂ</span>
-          </div>}
-          <div className={burger.chiflaBottom}>
-            <span className={burger.chiflaTextBottom}>CHIFLA BRIOCHE</span>
-            <img className={burger.chiflaImagBottom} src="../src/img/asset-23.svg" alt="" />
-          </div>
+
         </div>
-        
+
+        <div className={app.right}>
+
+
+          <Cifla />
+
+          <ChiflaBottum />
+
+        </div>
+
       </div>
 
 
