@@ -1,118 +1,173 @@
-import { useState } from 'react'
-import { Select, SelectOption } from './components/Select'
-import app from './app.module.css'
-import Cifla from './components/ingridientMenu/Cifla'
-import ChiflaBottum from './components/ingridientMenu/CiflaBottom';
-
-
+import { useState } from "react";
+import { Select, SelectOption } from "./components/Select";
+import app from "./app.module.css";
+import Cifla from "./components/ingridientMenu/Cifla";
+import ChiflaBottum from "./components/ingridientMenu/CiflaBottom";
+// import BurgerImages from "./components/ingridientMenu/BurgerImages";
 
 
 interface SelectControl {
-  id: string;
   options: SelectOption[];
-  value: string;
+  value: SelectOption;
+  name: string;
+  id: number
   isInitial: boolean;
 }
 
-
-const INITIAL_SELECTS = [
+// acestea sunt toate selecturile initiale
+const INITIAL_SELECTS: SelectControl[] = [
   {
-    id: '1',
-    options: [{ label: '-', value: ' 0' },
-    { label: 'SOS KETCHUP (10lei)', value: '25' },
-    { label: 'SOS TARTAR (10lei)', value: '25' },
-    { label: 'SOS MAIONEZA (10lei)', value: '25' },] as SelectOption[],
-    value: "Chifla",
-    isInitial: true
+    options: [{ label: "-", value: " 0" }],
+    value: { label: "-", value: " 0" },
+    name: "chifla",
+    id: 0,
+    isInitial: false,
   },
   {
-    id: '2',
-    options: [{ label: '-', value: ' 0' },
-    { label: 'PÂRJOALĂ VITĂ (45lei)', value: '35' },
-    { label: 'FILEU PUI PANE (32lei)', value: '25' },
-    { label: 'FILEU PUI GRILL(32lei)', value: '25' }] as SelectOption[],
-    value: "Carne",
-    isInitial: true
+    options: [
+      { label: "-", value: " 0" },
+      { label: "PÂRJOALĂ VITĂ (45lei)", value: "35" },
+
+    ],
+    value: { label: "-", value: " 0" },
+    name: "carne",
+    id: 1,
+    isInitial: true,
   },
+  {
+    options: [
+      { label: "-", value: " 0" },
+      { label: "SOS KETCHUP (10lei)", value: "25" },
+      { label: "SOS TARTAR (10lei)", value: "25" },
+      { label: "SOS MAIONEZA (10lei)", value: "25" },
+    ],
+    value: { label: "-", value: " 0" },
+    name: "sos-jos",
+    id: 2,
+    isInitial: true,
+  },
+  {
+    options: [
+      { label: "-", value: " 0" },
+      { label: "SOS KETCHUP (10lei)", value: "25" },
+      { label: "SOS TARTAR (10lei)", value: "25" },
+      { label: "SOS MAIONEZA (10lei)", value: "25" },
+    ],
+    value: { label: "-", value: " 0" },
+    name: "chifla",
+    id: 3,
+    isInitial: true,
+  },
+  {
+    options: [
+      { label: "-", value: " 0" },
+      { label: "SOS KETCHUP (10lei)", value: "25" },
+      { label: "SOS TARTAR (10lei)", value: "25" },
+      { label: "SOS MAIONEZA (10lei)", value: "25" },
+    ],
+    value: { label: "-", value: " 0" },
+    name: "cheese",
+    id: 4,
+    isInitial: true,
+  },
+  {
+    options: [
+      { label: "-", value: " 0" },
 
-]
-
-
-
-
-
+    ],
+    value: { label: "-", value: " 0" },
+    name: "chifla",
+    id: 5,
+    isInitial: true,
+  },
+];
 
 function App() {
+  //  acesta este useState unde tu trebuie sa adaugi selecturi
   const [selects, setSelects] = useState(INITIAL_SELECTS);
 
+  //  acesta este useState unde tu trebuie sa adaugi ingredientele alese de utilizator
+  const [selectedIngredients, setSelectedIngredients] = useState([
+    { id: 0, label: "chifla", value: "25" },
+    { id: 1, label: "-", value: "25" },
+    { id: 2, label: "-", value: "25" },
+    { id: 3, label: "-", value: "25" },
+    { id: 4, label: "-", value: "25" },
+    { id: 5, label: "-", value: "25" },
+  ]);
+  // logica cum sa adaugi in array o las pe tine sa o faci
 
-  const handleValueChange = (id: string, newValue: string) => {
-    setSelects(prev => prev.map(select =>
-      select.id === id ? { ...select, newValue } : select
-    ));
+  const handleChange = (id: number, value: SelectOption) => {
+    setSelectedIngredients((prevSelects) =>
+      prevSelects.map((select) =>
+        select.id === id ? { ...select, label: value.label, value: value.value }
+          : select
+      )
+    );
   };
 
- 
-  const handleAddSelect = (value: string,parentOptions: SelectOption[]) => {
-    const newSelect: SelectControl = {
-      id: Date.now().toString(),
-      options: parentOptions,
-      value: value ,
-      isInitial: false
-    };
+  const handleAdd = (id: number) => {
+    const parentSelect = selects.find((select) => select.id === id);
+    if (parentSelect) {
+      const newSelect: SelectControl = {
+        id: Date.now(), // Уникальный ID для нового компонента
+        options: parentSelect.options,
+        value: { label: parentSelect.value.label, value: parentSelect.value.value },
+        name: "",
+        isInitial: false
+      };
+      setSelects((prevSelects) => [...prevSelects, newSelect]);
+      selectedIngredients.push({ id: newSelect.id, label: "-", value: "0" })
+      selects.push(newSelect)
 
-    setSelects(prev => [...prev, newSelect]);
+    }
   };
 
-
-  const handleRemoveSelect = (id: string) => {
-    setSelects(prev => prev.filter(select => select.id !== id));
+  const handleRemove = (id: number) => {
+    setSelects((prevSelects) => prevSelects.filter((select) => select.id !== id));
   };
-
 
 
 
 
   return (
-    <>
-      <div className={app.wrapper}>
-        <div className={app.left}>
+    <div className={app.wrapper}>
+      <div className={app.left}>z
+        <div>
+          {selects.map((select, index) => (
+            <div key={index}>
+              <Select
+                options={select.options}
+                value={selectedIngredients[index]}
+
+                onChange={(value) => {
+                  handleChange(select.id, value)
 
 
-          <div>
-            {selects.map(select => (
-              <div key={select.id} >
-                <Select
-                  options={select.options}
-                  onChange={(value) => handleValueChange(select.id, value.value)}
-                  hasAddButton={select.isInitial}
-                  onAdd={() => select.isInitial && handleAddSelect(select.value,select.options,)}
-                  onRemove={!select.isInitial ? () => handleRemoveSelect(select.id) : undefined} name={select.value} />
+                }}
+                hasAddButton={select.isInitial}
+                name={select.name}
+                onAdd={() => handleAdd(select.id)}
+                onRemove={select.id > 6 ? () => handleRemove(select.id) : undefined}
+              // hasAddButton={select.id !== 0 && select.id <= 6} // Кнопка добавления только у первого компонента
+              />
 
-
-              </div>
-            ))}
-          </div>
-
-
+            </div>
+          ))}
         </div>
-
-        <div className={app.right}>
-
-
-          <Cifla />
-
-          <ChiflaBottum />
-
-        </div>
-
       </div>
 
+      <div className={app.right}>
+        <Cifla />
 
-    </>
-  )
+        {selectedIngredients.map((e) => console.log(e))}
+        {/* <BurgerImages img={""} /> */}
+        {/* aici tu mai adaugi o componeta si ca props sai ii dai ingredientele tale (selectedIngredients) de exemplu : <BurgerImages selectedIngredients={selectedIngredients} /> */}
+
+        <ChiflaBottum />
+      </div>
+    </div>
+  );
 }
 
-
-
-export default App
+export default App;
