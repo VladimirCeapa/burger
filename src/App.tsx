@@ -52,12 +52,12 @@ function App() {
     ));
   };
 
-  // Добавление нового селекта
-  const handleAddSelect = (parentOptions: SelectOption[]) => {
+ 
+  const handleAddSelect = (value: string,parentOptions: SelectOption[]) => {
     const newSelect: SelectControl = {
       id: Date.now().toString(),
       options: parentOptions,
-      value: "test",
+      value: value ,
       isInitial: false
     };
 
@@ -86,7 +86,7 @@ function App() {
                   options={select.options}
                   onChange={(value) => handleValueChange(select.id, value.value)}
                   hasAddButton={select.isInitial}
-                  onAdd={() => select.isInitial && handleAddSelect(select.options)}
+                  onAdd={() => select.isInitial && handleAddSelect(select.value,select.options,)}
                   onRemove={!select.isInitial ? () => handleRemoveSelect(select.id) : undefined} name={select.value} />
 
 

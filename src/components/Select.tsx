@@ -81,16 +81,16 @@ export function Select({ value, name, onChange, options, hasAddButton = false, o
                     </li>
                 ))}
             </ul>
-            <span
+            {hasAddButton && onAdd && ( <span
                 onClick={e => {
                     e.stopPropagation()
 
                 }} className={styles.adauga}>
-                <button onClick={onAdd} className={styles.cross}>✖</button> Adaugă item</span>
 
-            {/* Кнопка удаления */}
+                <button onClick={onAdd} className={styles.cross}>✖</button> Adaugă item</span>)}
+
             {onRemove && (
-                <button onClick={onRemove} >
+                <button className={styles.btnRemove} onClick={onRemove} >
                     x
                 </button>
             )}

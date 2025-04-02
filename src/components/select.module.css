@@ -111,7 +111,6 @@
    margin-left: 5em;
    color: rgb(248, 248, 247);
    font-family: Arial, Helvetica, sans-serif;
-   font-weight: 500;
    text-transform: uppercase;
    margin-bottom: 5em;
 }
@@ -121,8 +120,8 @@
    color: goldenrod;
    background-color: #fff;
    margin: auto;
-   height: 9px;
-   padding: 0.5em;
+ 
+   padding: 0.5em 1em;
    border: 0.2em solid goldenrod;
    border-radius: 50%;
    background-color: #fff;
@@ -131,5 +130,15 @@
 
 .cross:hover {
    color: rgba(218, 165, 32, 0.699);
-   transform: translate(0, -50%) rotate(0);
+  
+}
+.btnRemove{
+   position: absolute;
+   color: goldenrod;
+ 
+   margin-left:25.5em;
+   border-radius: 50%;
+   padding: 0.5em 1em;
+   cursor: pointer;
+   background:none;
 }
