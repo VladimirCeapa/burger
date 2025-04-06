@@ -12,10 +12,10 @@ export type SelectOption = {
 
 export type SelectProps = {
     options: SelectOption[]
-    value?: SelectOption
+    value?: SelectOption|undefined
     name: string
     onChange: (value: SelectOption) => void
-    hasAddButton?: boolean;
+    hasAddButton?: boolean|undefined;
     onAdd?: () => void;
     onRemove?: () => void;
 }
@@ -26,13 +26,10 @@ export function Select({ value, name, onChange, options, hasAddButton = false, o
     const [isOpen, setIsOpen] = useState(false)
     const [highlightIndex, setHighlightIndex] = useState(0)
     function clearOptions() {
-        onChange({
-            label: "string",
-            value: "string"
-        })
+        onChange(undefined)
     }
     function selectOption(option: SelectOption) {
-        if (option !== value) {
+        if (option.value !== value?.label) {
             onChange(option)
 
         }
@@ -41,7 +38,7 @@ export function Select({ value, name, onChange, options, hasAddButton = false, o
     }
     function isOptionSelected(option: SelectOption) {
 
-        return option === value
+        return option.value === value?.label
 
     }
     useEffect(() => {
@@ -81,16 +78,16 @@ export function Select({ value, name, onChange, options, hasAddButton = false, o
                     </li>
                 ))}
             </ul>
-            <span
+            {hasAddButton && onAdd && ( <span
                 onClick={e => {
                     e.stopPropagation()
 
                 }} className={styles.adauga}>
-                <button onClick={onAdd} className={styles.cross}>✖</button> Adaugă item</span>
 
-            {/* Кнопка удаления */}
+                <button onClick={onAdd} className={styles.cross}>✖</button> Adaugă item</span>)}
+
             {onRemove && (
-                <button onClick={onRemove} >
+                <button className={styles.btnRemove} onClick={onRemove} >
                     x
                 </button>
             )}
