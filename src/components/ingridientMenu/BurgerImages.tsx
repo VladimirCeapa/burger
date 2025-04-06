@@ -1,17 +1,32 @@
 
-import burger from'/src/components/burgerImg.module.css'
- type images={
-    img:string;
+
+
+
+interface Ingredient {
+  id: number
+  label: string
+  value: string
+  images?: string
 }
 
-function BurgerImages({img}:images){
-    return(
-        <div className={burger.chifla}>
-        <span className={burger.chiflaText}>CHIFLA BRIOCHE</span>
-        <img className={burger.chiflaImag} src={`../src/img/${img}.svg`} alt="" />
-      </div>
-    
-    )
+interface BurgerImagesProps {
+  selectedIngredients: Ingredient[]
 }
+
+function BurgerImages({ selectedIngredients }: BurgerImagesProps) {
+  console.log(selectedIngredients)
+  return (
+    <div>
+      {selectedIngredients.map(ingredient => (
+        <img
+          key={ingredient.id}
+
+          src={ingredient.images}
+          alt=''
+        />
+      ))}
+    </div>
+  );
+};
 
 export default BurgerImages

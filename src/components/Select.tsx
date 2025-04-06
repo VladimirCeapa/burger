@@ -6,16 +6,17 @@ import styles from './select.module.css'
 export type SelectOption = {
     label: string
     value: string
+    images?:string
 
 }
 
 
 export type SelectProps = {
     options: SelectOption[]
-    value?: SelectOption|undefined
+    value?: SelectOption
     name: string
     onChange: (value: SelectOption) => void
-    hasAddButton?: boolean|undefined;
+    hasAddButton?: boolean | undefined;
     onAdd?: () => void;
     onRemove?: () => void;
 }
@@ -69,7 +70,8 @@ export function Select({ value, name, onChange, options, hasAddButton = false, o
                         setIsOpen(false)
                     }}
 
-                        onMouseEnter={() => setHighlightIndex(index)}
+                        onMouseEnter={() => setHighlightIndex(index)
+                        }
                         key={option.value}
                         className={`${styles.option} ${isOptionSelected(option) ? styles.selected : ''}
                      ${index === highlightIndex ? styles.highlighted : ''}
@@ -78,7 +80,7 @@ export function Select({ value, name, onChange, options, hasAddButton = false, o
                     </li>
                 ))}
             </ul>
-            {hasAddButton && onAdd && ( <span
+            {hasAddButton && onAdd && (<span
                 onClick={e => {
                     e.stopPropagation()
 
