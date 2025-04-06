@@ -13,10 +13,10 @@ export type SelectOption = {
 
 export type SelectProps = {
     options: SelectOption[]
-    value?: SelectOption
+    value?: SelectOption|undefined
     name: string
     onChange: (value: SelectOption) => void
-    hasAddButton?: boolean | undefined;
+    hasAddButton?: boolean;
     onAdd?: () => void;
     onRemove?: () => void;
 }
@@ -80,7 +80,7 @@ export function Select({ value, name, onChange, options, hasAddButton = false, o
                     </li>
                 ))}
             </ul>
-            {hasAddButton && onAdd && (<span
+            <span
                 onClick={e => {
                     e.stopPropagation()
 

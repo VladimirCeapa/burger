@@ -1,7 +1,4 @@
 
-
-
-
 interface Ingredient {
   id: number
   label: string
@@ -28,5 +25,6 @@ function BurgerImages({ selectedIngredients }: BurgerImagesProps) {
     </div>
   );
 };
+
 
 export default BurgerImages
