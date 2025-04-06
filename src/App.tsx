@@ -83,7 +83,7 @@ function App() {
                 name={select.name}
                 onAdd={() => handleAdd(select.id, index)}
                 onRemove={select.id > 6 ? () => handleRemove(select.id, index) : undefined} // Удаляем кнопку удаления для первого компонента
-                hasAddButton={select.id < 6 && select.id !== 0 && select.id !== 5} // Кнопка добавления только у первого компонента
+                hasAddButton={select.id < 6 && select.id !== 0 && select.id !== 6} // Кнопка добавления только у первого компонента
               />
 
             </div>
