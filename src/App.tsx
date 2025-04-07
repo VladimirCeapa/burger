@@ -5,6 +5,7 @@ import Cifla from "./components/ingridientMenu/Cifla";
 import ChiflaBottum from "./components/ingridientMenu/CiflaBottom";
 import BurgerImages from "./components/ingridientMenu/BurgerImages";
 import { INITIAL_SELECTS, SelectControl } from "./components/InitialSelect";
+import InfoPanel from "./components/InfoPanel";
 
 
 
@@ -23,12 +24,12 @@ function App() {
 
   //  acesta este useState unde tu trebuie sa adaugi ingredientele alese de utilizator
   const [selectedIngredients, setSelectedIngredients] = useState<Ingredient[]>([
-    { id: 1, label: "chifla", value: "25", images: '' },
+    { id: 1, label: "chifla 10(lei)", value: "10", images: '' },
     { id: 2, label: "-", value: "0", images: '' },
     { id: 3, label: "-", value: "0", images: '' },
     { id: 4, label: "-", value: "0", images: '' },
     { id: 5, label: "-", value: "0", images: '' },
-    { id: 6, label: "chifla", value: "0", images: '' },
+    { id: 6, label: "chifla 10(lei)", value: "10", images: '' },
   ]);
   // logica cum sa adaugi in array o las pe tine sa o faci
 
@@ -89,6 +90,8 @@ function App() {
             </div>
           ))}
         </div>
+      <h2 className={app.info}>Info Panel</h2>  
+        <InfoPanel selectedIngredients={selectedIngredients} />
       </div>
 
       <div className={app.right}>
