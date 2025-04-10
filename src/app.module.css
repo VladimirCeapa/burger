@@ -30,3 +30,27 @@
 img{
   padding: 0px 0px 25px 0px;
 }
+.info {
+  color: goldenrod;
+  font-size: 1rem;
+}
+h2 {
+  text-transform: lowercase;
+}
+
+.infoPanel {
+  color: goldenrod;
+  align-self: flex-start;
+  width: 20em;
+  text-decoration: solid;
+  margin: auto;
+  font-size: 0.7rem;
+  padding: 0.5em 0.7em;
+  border: 0.2em solid goldenrod;
+  margin-left: 0;
+  margin-bottom: 2em;
+}
+.total {
+  margin-left: 1.2em;
+  font-size: 1.6em;
+}
