@@ -1,119 +1,107 @@
 .chifla {
-    position: relative;
-    /* top: -60px; */
-
-
+  position: relative;
+  /* top: -60px; */
 }
 
 .chiflaText {
-    position: absolute;
-    top: 35px;
-    right: 215px;
-    font-family: "Poppins", serif;
-    font-weight: 700;
-    font-style: italic;
-    color: #f8bb46;
-    font-size: 26px;
-    width: 250px;
-    text-align: left;
-    text-transform: lowercase;
+  position: absolute;
+  top: 35px;
+  right: 10em;
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: italic;
+  color: #f8bb46;
+  font-size: 26px;
+  width: 250px;
+  text-align: left;
+  text-transform: lowercase;
 }
-
 
 .chifla::after {
-    content: '';
-    position: absolute;
-    top: 40px;
-    right: 210px;
-    margin: auto;
-    width: 60px;
-    height: 30px;
-    fill: #f8bb46;
-    background: url(/src/img/arrow-left.svg) no-repeat center
+  content: "";
+  position: absolute;
+  top: 40px;
+  right: 14em;
+  margin: auto;
+  width: 60px;
+  height: 30px;
+  fill: #f8bb46;
+  background: url(/src/img/arrow-left.svg) no-repeat center;
 }
-
-
-
 
 .carne {
-
-    padding: 10px;
-
+  padding: 10px;
 }
 
-
 .carneText {
-
-    position: absolute;
-    font-family: "Poppins", serif;
-    font-weight: 700;
-    left: 320px;
-    font-style: italic;
-    color: #f8bb46;
-    font-size: 26px;
-    width: 250px;
-    text-align: left;
-    text-transform: lowercase;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  left: 320px;
+  font-style: italic;
+  color: #f8bb46;
+  font-size: 26px;
+  width: 250px;
+  text-align: left;
+  text-transform: lowercase;
 }
 
 .carneText::before {
-    content: '';
-    position: absolute;
-    padding: 10px;
-    right: 270px;
-    width: 50px;
-    height: 30px;
-    background: url(/src/img/arrow-right.svg) no-repeat center;
+  content: "";
+  position: absolute;
+  padding: 10px;
+  right: 270px;
+  width: 50px;
+  height: 30px;
+  background: url(/src/img/arrow-right.svg) no-repeat center;
 }
-
 
 .chiflaTextBottom {
-    position: absolute;
-    right: 125px;
-    bottom: 10px;
-    font-family: "Poppins", serif;
-    font-weight: 700;
-    font-style: italic;
-    color: #f8bb46;
-    font-size: 26px;
-    width: 350px;
-    text-transform: lowercase;
+  position: absolute;
+  right: 5.5em;
+
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: italic;
+  color: #f8bb46;
+  font-size: 26px;
+  width: 350px;
+  text-transform: lowercase;
 }
 
-
 .chiflaTextBottom::after {
-    content: '';
-    position: absolute;
-    top: 10px;
-    right: 100px;
-    fill: #f8bb46;
-    width: 50px;
-    height: 30px;
-    background: url(/src/img/arrow-left.svg) no-repeat center
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 100px;
+  fill: #f8bb46;
+  width: 50px;
+  height: 30px;
+  background: url(/src/img/arrow-left.svg) no-repeat center;
 }
 
 .fileuPuiPane {
-    padding: 10px;
+  padding: 10px;
 }
 
 .fileuPuiPaneText {
-    position: absolute;
-    font-family: "Poppins", serif;
-    font-weight: 700;
-    font-style: italic;
-    color: #f8bb46;
-    font-size: 26px;
-    width: 250px;
-    left: 300px;
-    text-align: left;
-    text-transform: lowercase;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: italic;
+  color: #f8bb46;
+  font-size: 26px;
+  width: 250px;
+  left: 300px;
+  text-align: left;
+  text-transform: lowercase;
 }
 
 .fileuPuiPaneText::before {
-    content: '';
-    position: absolute;
-    left: -70px;
-    width: 60px;
-    height: 30px;
-    background: url(/src/img/arrow-right.svg) no-repeat center;
+  content: "";
+  position: absolute;
+  left: -70px;
+  width: 60px;
+  height: 30px;
+  background: url(/src/img/arrow-right.svg) no-repeat center;
 }

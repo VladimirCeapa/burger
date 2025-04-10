@@ -1,7 +1,6 @@
 import app from "../app.module.css"
 
 interface Ingredient {
-    id: number
     label: string
     value: string
     images?: string
@@ -21,7 +20,7 @@ function InfoPanel({ selectedIngredients }: InfoPanelProps) {
     return (
         <div className={app.infoPanel}>
             {selectedIngredients.map(ingredient => (
-                ingredient.label === "-" ? null : < h2 > {ingredient.label}</h2>
+                ingredient.label === "-" ? null : < h5 > {ingredient.label}</h5> 
 
             )
             )}

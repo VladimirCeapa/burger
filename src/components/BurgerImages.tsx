@@ -3,7 +3,6 @@
 
 
 interface Ingredient {
-  id: number
   label: string
   value: string
   images?: string
@@ -17,9 +16,9 @@ function BurgerImages({ selectedIngredients }: BurgerImagesProps) {
   console.log(selectedIngredients)
   return (
     <div>
-      {selectedIngredients.map(ingredient => (
+      {selectedIngredients.map((ingredient, index) => (
         <img
-          key={ingredient.id}
+          key={index}
 
           src={ingredient.images}
           alt=''

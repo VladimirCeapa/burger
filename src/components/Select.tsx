@@ -6,7 +6,7 @@ import styles from './select.module.css'
 export type SelectOption = {
     label: string
     value: string
-    images?:string
+    images?: string
 
 }
 
@@ -16,13 +16,14 @@ export type SelectProps = {
     value?: SelectOption
     name: string
     onChange: (value: SelectOption) => void
-    hasAddButton?: boolean | undefined;
+    isInitial: boolean
     onAdd?: () => void;
     onRemove?: () => void;
+    isRemove: boolean
 }
 
 
-export function Select({ value, name, onChange, options, hasAddButton = false, onAdd, onRemove }: SelectProps) {
+export function Select({ value, name, onChange, options, isInitial, onAdd, isRemove, onRemove }: SelectProps) {
 
     const [isOpen, setIsOpen] = useState(false)
     const [highlightIndex, setHighlightIndex] = useState(0)
@@ -80,7 +81,7 @@ export function Select({ value, name, onChange, options, hasAddButton = false, o
                     </li>
                 ))}
             </ul>
-            {hasAddButton && onAdd && (<span
+            {isInitial && (<span
                 onClick={e => {
                     e.stopPropagation()
 
@@ -88,11 +89,11 @@ export function Select({ value, name, onChange, options, hasAddButton = false, o
 
                 <button onClick={onAdd} className={styles.cross}>✖</button> Adaugă item</span>)}
 
-            {onRemove && (
+            {isRemove &&
                 <button className={styles.btnRemove} onClick={onRemove} >
                     x
                 </button>
-            )}
+            }
 
 
         </div>
